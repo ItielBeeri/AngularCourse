@@ -1,0 +1,42 @@
+<h1>Hello michlala!</h1>
+
+<div>
+    <h2>New sandwich</h2>
+    <p>
+        <label>
+            Child name
+            <input [(ngModel)]="newSandwich.childName"/>
+        </label>
+    </p>
+    <p>
+        <label>
+            Bread type
+            <select [(ngModel)]="newSandwich.breadType">
+                <option value="bread">Bread</option>
+                <option value="bun">Bun</option>
+                <option value="pita">Pita</option>
+            </select>
+        </label>
+    </p>
+    <p>
+        <label>
+            Spread
+            <input [(ngModel)]="newSandwich.spread"/>
+        </label>
+    </p>
+    <button (click)="addSandwich()">Add</button>
+</div>
+
+<div>
+    <h2>Sandwiches</h2>
+    <ul>
+        <li *ngFor="let child of childern">
+            {{child.name}}
+            <ul>
+                <li *ngFor="let sandwich of child.sandwiches">
+                    Make {{sandwich.breadType}} with {{sandwich.spread}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Child } from '../model/child';
 import { ChildrenService } from '../data/children.service';
 import { HeightRecordViewModel } from './height-record.view-model';
@@ -11,16 +11,17 @@ import { HeightRecord } from '../model/height-record';
 })
 export class ChildComponent implements OnInit {
 
-  private child: Child;
+  @Input() private child: Child;
+
+  @Output() private recordAdded: EventEmitter<HeightRecord> = new EventEmitter<HeightRecord>();
+
   private fontSize: number = 40;
   private currentRecord: HeightRecordViewModel = new HeightRecordViewModel();
 
-  constructor(private childrenService: ChildrenService) {
+  constructor() {
   }
 
   ngOnInit() {
-    let children = this.childrenService.getChildren();
-    this.child = children[0];
   }
 
   grow(){
@@ -32,7 +33,7 @@ export class ChildComponent implements OnInit {
   }
 
   addRecord() {
-    let record = new HeightRecord(this.currentRecord.date, this.currentRecord.value);
-    this.childrenService.addHeightRecord(this.child.name, record);
+    let newRecord = new HeightRecord(this.currentRecord.date, this.currentRecord.value);
+    this.recordAdded.emit(newRecord);    
   }
 }

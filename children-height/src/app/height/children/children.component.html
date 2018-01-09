@@ -1,0 +1,3 @@
+<div>
+  <child *ngFor="let ch of children" [child]="ch" (recordAdded)="addRecordUsingService(ch.name, $event)"></child>
+</div>

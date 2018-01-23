@@ -1,0 +1,36 @@
+{
+  "children": [
+    {
+      "id": 1,
+      "name": "David"
+    },
+    {
+      "name": "Hagit",
+      "id": 2
+    },
+    {
+      "name": "Gili",
+      "id": 3
+    }
+  ],
+  "sandwiches": [
+    {
+      "id": 1,
+      "childId": 1,
+      "breadType": "Pita",
+      "spread": "Humus"
+    },
+    {
+      "id": 2,
+      "childId": 2,
+      "breadType": "Pita",
+      "spread": "Humus"
+    },
+    {
+      "id": 3,
+      "childId": 3,
+      "breadType": "bun",
+      "spread": "Cheese"
+    }
+  ]
+}
